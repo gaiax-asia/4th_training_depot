@@ -55,6 +55,10 @@
     padding: 1em 2em;
     width: 13em;
     background: #141;
+    
+    #text {
+        color: #FFF;
+    }
 
 	form, div {
 	      display: inline;
@@ -88,7 +92,9 @@
   }
   
   #time {
+      list-style: none;
 	  color: #FFF;
+      font-size: 8px;
   }
   
   .depot_form {

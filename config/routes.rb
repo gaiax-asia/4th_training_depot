@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users, path: 'u'
   get 'admin' => 'admin#index'
 
   controller :sessions do

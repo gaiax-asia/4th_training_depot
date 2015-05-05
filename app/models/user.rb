@@ -1,18 +1,30 @@
 class User < ActiveRecord::Base
-  validates :name, presence: true, uniqueness: true
-  has_secure_password
-  #acts_as_url :generate_url
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
   
   after_destroy :ensure_an_admin_user_remains
-  #
-  # def to_param
-  #   url
-  # end
-  #
-  # def generate_url
-  #   "#{id}-#{name}"
-  # end
-  #
+  attr_accessor :login
+  
+  # def login=(login)
+#     @login = login
+#   end
+#
+#   def login
+#     @login || self.name || self.email
+#   end
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions.to_hash).where(["lower(name) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    else
+      where(conditions.to_hash).first
+    end
+  end
+
   private
   def ensure_an_admin_user_remains
     if User.count.zero?

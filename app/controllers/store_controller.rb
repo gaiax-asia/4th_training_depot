@@ -8,7 +8,10 @@ class StoreController < ApplicationController
       redirect_to store_url(locale: params[:set_locale])
     else
       #@products = Product.order(:title)
-      @products = Product.paginate(page: params[:page], per_page: 5)
+      @products = Product.paginate(page: params[:page], per_page: 3)
     end
+  end
+  
+  def refresh_cart
   end
 end

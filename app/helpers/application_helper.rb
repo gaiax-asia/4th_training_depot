@@ -5,4 +5,10 @@ module ApplicationHelper
     end
     content_tag("div", attributes, &block)
   end
+
+
+  def paginate(collection, params= {})
+      will_paginate collection, params.merge(:renderer => RemoteLinkPaginationHelper::LinkRenderer)
+  end
 end
+

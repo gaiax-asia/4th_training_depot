@@ -12,10 +12,7 @@
 		vertical-align: top;
 	}
 	
-	.list-image{
-		width: 60px;
-		height: 70px;
-	}
+	
 	
 	.list-decription{
 		width: 60%;
@@ -47,5 +44,11 @@
 	
 	.list_line_odd{
 		background: #f8b0f8;
+	}
+}
+
+td#product_image {
+	img {
+		width: 100px;
 	}
 }

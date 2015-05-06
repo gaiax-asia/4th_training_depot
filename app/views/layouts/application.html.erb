@@ -18,14 +18,22 @@
 	</div>
 	<div id="columns">
 		<div id="side">
-			<% if @cart %>
-				<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
-					<%= render @cart %>
-				<% end %>
-			<% end %>
 			<ul>
-				<li><%= link_to t('.home'), store_path %></li>
-				
+				<li><%= link_to t('.home'), store_path %></li><br/>
+        
+        <% if user_signed_in? %>
+          <div id="text">
+            <%= "Signed in as #{current_user.name}" %>
+            <br/>
+            <%= button_to('Logout', destroy_user_session_path, :method => :delete) %>        
+          
+          </div>
+        <% else %>
+          <li>
+            <%= button_to('Login', new_user_session_path, method: :get)  %>  
+          </li>
+        <% end %>
+        <br/>
         <% if user_signed_in? %>
         <br>
         <li><%= link_to "Users", users_path %></li>
@@ -35,30 +43,14 @@
 				<br>
 			</ul>
 			
-			<!-- <% if session[:user_id] %>
-      <ul>
-        <li id="time">Logged in as <%= User.find(session[:user_id]).name %></li>
-        <li><%= link_to 'Orders', orders_path %></li>
-        <li><%= link_to 'Products', products_path %></li>
-        <li><%= link_to 'Users', users_path %></li>
-      </ul>
-      <%= button_to 'Logout', logout_path, method: :delete %>
-      <% else %>
-      <%= button_to 'Log-in', login_path, method: :get%>
-      <% end %> -->
+			<% if @cart %>
+				<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+					<%= render @cart %>
+				<% end %>
+			<% end %>
+
         
-      <% if user_signed_in? %>
-        <div id="text">
-          <%= "Signed in as #{current_user.name}" %>
-          <br/>
-          <%= button_to('Logout', destroy_user_session_path, :method => :delete) %>        
-          
-        </div>
-      <% else %>
-        <li>
-          <%= button_to('Login', new_user_session_path)  %>  
-        </li>
-      <% end %>
+      
       <br />
       <br />
       <li id="time">Page accessed at <%= Time.now %></li>

@@ -7,7 +7,8 @@ class LineItemsController < ApplicationController
   # GET /line_items
   # GET /line_items.json
   def index
-    @line_items = LineItem.all
+    #@line_items = LineItem.all
+   # @line_items = LineItem.paginate(page: params[:page], per_page: 3)
   end
 
   # GET /line_items/1

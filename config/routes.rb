@@ -1,26 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :users, path: 'u'
   get 'admin' => 'admin#index'
 
-  controller :sessions do
-    get 'login' => :new
-    post 'login' => :create
-    delete 'logout' => :destroy
-  end
-
-  get 'sessions/create'
-  get 'sessions/destroy'
-
-  resources :users
+  resources :users, only: [:index, :show]
   
   resources :products do
     get :who_bought, on: :member
   end
   
   scope '(:locale)' do
+    devise_for :users, path: 'u'
+    
     resources :orders
     resources :line_items
     resources :carts
+    get 'store/refresh_cart'
     root 'store#index', as: 'store', via: :all
   end
 

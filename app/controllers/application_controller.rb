@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
   
   #adds User.name to Devise's default strong parameters
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :name
+    devise_parameter_sanitizer.for(:sign_up) << :name << :email
     devise_parameter_sanitizer.for(:sign_in) << :name
-    devise_parameter_sanitizer.for(:account_update) << :name
+    devise_parameter_sanitizer.for(:account_update) << :name << :email
   end
   
   def set_i18n_locale_from_params

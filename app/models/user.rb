@@ -8,13 +8,13 @@ class User < ActiveRecord::Base
   after_destroy :ensure_an_admin_user_remains
   attr_accessor :login
   
-  # def login=(login)
-#     @login = login
-#   end
-#
-#   def login
-#     @login || self.name || self.email
-#   end
+  def login=(login)
+    @login = login
+  end
+
+  def login
+    @login || self.name || self.email
+  end
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup

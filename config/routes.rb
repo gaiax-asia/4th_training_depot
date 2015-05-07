@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   
   scope '(:locale)' do
     devise_for :users, path: 'u'
-    
     resources :orders
     resources :line_items
     resources :carts

@@ -4,6 +4,8 @@ class Product < ActiveRecord::Base
   
   before_destroy :ensure_not_referenced_by_any_line_item
   
+  CATEGORY_TYPES = ["Fantasy", "Nonfiction", "Mystery", "Young Adult", "Thriller", "Sci-Fi", "Romance", "Education"]
+  
   validates :title, :description, :image_url, presence: true
   validates :price, numericality: {greater_than_or_equal_to: 0.01}
   validates :title, uniqueness: true, length: {minimum: 3}
@@ -11,6 +13,7 @@ class Product < ActiveRecord::Base
     with: %r{\.(gif|jpg|png)\Z}i,
     message: 'must be a URL for GIF, JPG or PNG image.'
   }
+  validates :category, inclusion: CATEGORY_TYPES 
   
   def self.latest
     Product.order(:updated_at).last

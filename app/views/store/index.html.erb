@@ -3,6 +3,15 @@
 <% end %>
 <h1><%= t('.title_html') %></h1>
 
+<div id="category_search">
+
+<%= form_tag(store_path, method: "get", id: "category-search") do %>
+  <%= select_tag(:category_search, options_for_select(Product::CATEGORY_TYPES), prompt: "Search catalog by category") %>
+  <%= submit_tag "Search", name: nil %>
+<% end %>
+
+</div>
+
 <div id="product_listing">
   <%= render "product_list" %>
 <div>

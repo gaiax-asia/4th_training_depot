@@ -7,8 +7,11 @@ class StoreController < ApplicationController
     if params[:set_locale]
       redirect_to store_url(locale: params[:set_locale])
     else
-      #@products = Product.order(:title)
-      @products = Product.paginate(page: params[:page], per_page: 3)
+      unless params[:category_search].blank?
+        @products = Product.where(category: params[:category_search]).paginate(page: params[:page], per_page: 3)
+      else
+        @products = Product.paginate(page: params[:page], per_page: 3)
+      end
     end
   end
   

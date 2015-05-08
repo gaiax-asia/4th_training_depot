@@ -27,6 +27,10 @@
     <%= f.label :price %><br>
     <%= f.text_field :price %>
   </div>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.select :category, Product::CATEGORY_TYPES, prompt: "Please select a category." %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -5,9 +5,14 @@
 
 <div id="category_search">
 
-<%= form_tag(store_path, method: "get", id: "category-search") do %>
-  <%= select_tag(:category_search, options_for_select(Product::CATEGORY_TYPES), prompt: "Search catalog by category") %>
-  <%= submit_tag "Search", name: nil %>
+<%= form_tag(store_path, method: "post", id: "category-search", data: {remote: true}) do %>
+  <%=
+  select_tag(:category_search,
+  options_for_select(Product::CATEGORY_TYPES, params[:category_search]),
+  prompt: "All Categories",
+  onchange: "$(this.form).submit()")
+  %>
+  <%= submit_tag "Search by Category", name: nil %>
 <% end %>
 
 </div>

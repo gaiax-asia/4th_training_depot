@@ -17,7 +17,8 @@ Product.create!(title: 'CoffeeScript',
 	shows you how to hold onto all the power and flexibility of JavaScript
 	while writing clearer, cleaner, and safer code.
       </p>},
-  image_url:   'cs.jpg',    
+  image_url:   'cs.jpg',  
+  category: 'Education',  
   price: 36.00)
 # . . .
 Product.create!(title: 'Programming Ruby 1.9 & 2.0',
@@ -28,9 +29,9 @@ Product.create!(title: 'Programming Ruby 1.9 & 2.0',
         you should add Ruby to your toolbox.
       </p>},
   image_url: 'ruby.jpg',
+  category: 'Education',
   price: 49.95)
 # . . .
-
 Product.create!(title: 'Rails Test Prescriptions',
   description: 
     %{<p>
@@ -42,4 +43,18 @@ Product.create!(title: 'Rails Test Prescriptions',
         including Cucumber, Shoulda, Machinist, Mocha, and Rcov.
       </p>},
   image_url: 'rtp.jpg',
+  category: 'Education',
   price: 34.95)
+# . . .
+Product.create!(title: 'Nine Stories - J.D. Salinger',
+  description:
+  %{<p>
+    Stories: A Perfect Day for Bananafish, Uncle Wiggily in Connecticut,
+    Just Before the War with the Eskimos, The Laughing Man, Down at the Dinghy, For
+    Esme -- With Love and Squalor, Pretty Mouth and Green My Eyes, De Daumier-Smith's
+    Blue Period, and Teddy.
+  </p>},
+  image_url: 'http://24.media.tumblr.com/tumblr_m3i3erArbJ1r9y1cuo1_500.jpg',
+  category: 'General Fiction',
+  price: 9.96
+)

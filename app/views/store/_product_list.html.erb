@@ -1,8 +1,9 @@
 <div id="page_links_product">
-  <%= will_paginate @products, params: {controller: "store"}, renderer: 'RemoteLinkRenderer' %>
+  <%= will_paginate @products, params: {controller: "store", category_search: params[:category_search]}, renderer: 'RemoteLinkRenderer' %>
 </div>
 
 <% cache ['store', Product.latest] do %>
+  <%= "Nothing to show!" if @products.empty? %>
 	<% @products.each do |product| %>
 		<% cache ['entry', product] do %>
 			<div class="entry">

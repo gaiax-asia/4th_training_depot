@@ -6,19 +6,17 @@
 <div id="category_search">
 
 <%= form_tag(store_path, method: "post", id: "category-search", data: {remote: true}) do %>
-  <%=
-  select_tag(:category_search,
+  <%= select_tag(:category_search,
   options_for_select(Product::CATEGORY_TYPES, params[:category_search]),
   prompt: "All Categories",
-  onchange: "$(this.form).submit()")
-  %>
-  <%= submit_tag "Search by Category", name: nil %>
+  onchange: "$(this.form).submit()") %>
+  <%= submit_tag "Browse by Category", name: nil %>
 <% end %>
 
 </div>
 
 <div id="product_listing">
-  <%= render "product_list" %>
+  <%= render partial: "product_list", locals: {current_cart_page: @current_cart_page} %>
 <div>
 
 <br />

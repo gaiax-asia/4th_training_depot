@@ -1,18 +1,4 @@
 Rails.application.routes.draw do
-  get 'categories/index'
-
-  get 'categories/show'
-
-  get 'categories/new'
-
-  get 'categories/edit'
-
-  get 'categories/create'
-
-  get 'categories/update'
-
-  get 'categories/destroy'
-
   get 'admin' => 'admin#index'
 
   resources :users, only: [:index, :show]
@@ -31,8 +17,6 @@ Rails.application.routes.draw do
     root 'store#index', as: 'store', via: :all
   end
 
-  
-  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

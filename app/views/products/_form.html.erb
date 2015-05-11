@@ -28,8 +28,9 @@
     <%= f.text_field :price %>
   </div>
   <div class="field">
-    <%= f.label :category %><br>
-    <%= f.select :category, Product::CATEGORY_TYPES, prompt: "Please select a category." %>
+    <%= f.label :category_id %><br>
+    <%# f.select :category_id, Category.all.collect {|c| [c.name, c.id] }, prompt: "Please select a category" %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, prompt: "Please select a category" %>
   </div>
   <div class="actions">
     <%= f.submit %>

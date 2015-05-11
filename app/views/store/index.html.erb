@@ -7,7 +7,7 @@
 
 <%= form_tag(store_path, method: "post", id: "category-search", data: {remote: true}) do %>
   <%= select_tag(:category_search,
-  options_for_select(Product::CATEGORY_TYPES, params[:category_search]),
+  options_for_select(Category.all.collect {|c| [c.name, c.id]}, params[:category_search]),
   prompt: "All Categories",
   onchange: "$(this.form).submit()") %>
   <%= submit_tag "Browse by Category", name: nil %>

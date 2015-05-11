@@ -7,6 +7,11 @@
 # Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
 #---
 # encoding: utf-8
+Category.delete_all
+Category.create!(name: 'Education')
+Category.create!(name: 'Fiction')
+Category.create!(name: 'Romance')
+
 Product.delete_all
 Product.create!(title: 'CoffeeScript',
   description: 
@@ -18,7 +23,7 @@ Product.create!(title: 'CoffeeScript',
 	while writing clearer, cleaner, and safer code.
       </p>},
   image_url:   'cs.jpg',  
-  category: 'Education',  
+  category_id: 1,  
   price: 36.00)
 # . . .
 Product.create!(title: 'Programming Ruby 1.9 & 2.0',
@@ -29,7 +34,7 @@ Product.create!(title: 'Programming Ruby 1.9 & 2.0',
         you should add Ruby to your toolbox.
       </p>},
   image_url: 'ruby.jpg',
-  category: 'Education',
+  category_id: 1,
   price: 49.95)
 # . . .
 Product.create!(title: 'Rails Test Prescriptions',
@@ -43,7 +48,7 @@ Product.create!(title: 'Rails Test Prescriptions',
         including Cucumber, Shoulda, Machinist, Mocha, and Rcov.
       </p>},
   image_url: 'rtp.jpg',
-  category: 'Education',
+  category_id: 1,
   price: 34.95)
 # . . .
 Product.create!(title: 'Nine Stories - J.D. Salinger',
@@ -55,6 +60,6 @@ Product.create!(title: 'Nine Stories - J.D. Salinger',
     Blue Period, and Teddy.
   </p>},
   image_url: 'http://24.media.tumblr.com/tumblr_m3i3erArbJ1r9y1cuo1_500.jpg',
-  category: 'General Fiction',
+  category_id: 2,
   price: 9.96
 )

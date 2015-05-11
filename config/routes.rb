@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'categories/index'
+
+  get 'categories/show'
+
+  get 'categories/new'
+
+  get 'categories/edit'
+
+  get 'categories/create'
+
+  get 'categories/update'
+
+  get 'categories/destroy'
+
   get 'admin' => 'admin#index'
 
   resources :users, only: [:index, :show]
@@ -12,6 +26,7 @@ Rails.application.routes.draw do
     resources :orders
     resources :line_items
     resources :carts
+    resources :categories
     get 'store/refresh_cart'
     root 'store#index', as: 'store', via: :all
   end

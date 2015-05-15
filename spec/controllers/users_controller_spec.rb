@@ -17,7 +17,7 @@ RSpec.describe UsersController, type: :controller do
   
   describe "logged in user" do
     before :each do
-      @user = User.create!(name: 'Example', password: 'secret', email: 'email@example.com')
+      @user = create(:user)
       login_with @user
     end
     

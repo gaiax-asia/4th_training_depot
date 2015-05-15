@@ -17,7 +17,7 @@ RSpec.describe CategoriesController, type: :controller do
   
   describe "logged in user" do
     before :each do
-      login_with User.create!(name: 'Example', password: 'secret', email: 'email@example.com')
+      login_with create(:user)
       @category = Category.create!(name: 'Fiction')
     end
     

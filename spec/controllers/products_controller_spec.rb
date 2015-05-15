@@ -17,7 +17,7 @@ RSpec.describe ProductsController, type: :controller do
   
   describe "logged in user" do
     before :each do
-      login_with User.create!(name: 'Example', password: 'secret', email: 'email@example.com')
+      login_with create(:user)
       @product = Product.create!(title: 'Test', description: 'Test', image_url: 'test.jpg', price: 11, category_id: 1)
     end
     

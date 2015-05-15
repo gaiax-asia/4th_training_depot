@@ -16,7 +16,7 @@ RSpec.describe AdminController, type: :controller do
   
   describe "logged-in user" do
     it "render index page" do
-      login_with User.create!(name: 'Example', password: 'secret', email: 'email@example.com')
+      login_with login_with create(:user)
       get :index
       expect(response).to render_template(:index)
     end

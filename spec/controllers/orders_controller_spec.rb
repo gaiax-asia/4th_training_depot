@@ -17,7 +17,7 @@ RSpec.describe OrdersController, type: :controller do
   
   describe "logged in user" do
     before :each do
-      login_with User.create!(name: 'Example', password: 'secret', email: 'email@example.com')
+      login_with create(:user)
       @order = Order.create!(name: 'Example', email: 'example@example.com', address: 'example', pay_type: 'Check')
     end
     
